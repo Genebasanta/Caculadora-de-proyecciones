@@ -456,7 +456,7 @@ function App() {
                     <Tooltip 
                       contentStyle={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border)', borderRadius: '8px' }}
                       itemStyle={{ color: 'var(--text-primary)' }}
-                      formatter={(value: any) => [`${value}%`, 'Engagement Rate']}
+                      formatter={(value: any) => [value + '%', 'Engagement Rate']}
                     />
                     <Legend />
                     {results.map((res) => (
