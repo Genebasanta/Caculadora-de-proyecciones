@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   LineChart,
   Line,
@@ -79,7 +79,7 @@ function App() {
 
     try {
       const cleanProfile = net.profile.replace('@', '');
-      const res = await fetch(`http://localhost:3000/api/followers?network=${net.network}&profile=${cleanProfile}`);
+      const res = await fetch(`https://caculadora-de-proyecciones.onrender.com/api/followers?network=${net.network}&profile=${cleanProfile}`);
       const data = await res.json();
       
       if (data.followers !== null) {
@@ -131,7 +131,7 @@ function App() {
         if (!followers) {
           try {
             const cleanProfile = net.profile.replace('@', '');
-            const res = await fetch(`http://localhost:3000/api/followers?network=${net.network}&profile=${cleanProfile}`);
+            const res = await fetch(`https://caculadora-de-proyecciones.onrender.com/api/followers?network=${net.network}&profile=${cleanProfile}`);
             const data = await res.json();
             followers = data.followers !== null ? data.followers.toString() : '5000';
             isEstimated = !!data.isEstimated;
@@ -154,7 +154,7 @@ function App() {
           }
         }
 
-        const response = await fetch('http://localhost:3000/api/project', {
+        const response = await fetch('https://caculadora-de-proyecciones.onrender.com/api/project', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -456,7 +456,7 @@ function App() {
                     <Tooltip 
                       contentStyle={{ backgroundColor: 'var(--panel-bg)', borderColor: 'var(--panel-border)', borderRadius: '8px' }}
                       itemStyle={{ color: 'var(--text-primary)' }}
-                      formatter={(value: number) => [`${value}%`, 'Engagement Rate']}
+                      formatter={(value: number | string) => [`${value}%`, 'Engagement Rate']}
                     />
                     <Legend />
                     {results.map((res) => (
